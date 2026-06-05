@@ -13,7 +13,7 @@ A clean and responsive Todo List application built with vanilla HTML, CSS, and J
 <img width="2880" height="1564" alt="Image" src="https://github.com/user-attachments/assets/8a3c07a7-93a7-434e-88cd-59cb6268b9be" />
 
 - Developed by Nastaran Ghorbanpour
-- Created - 2025-07-30
+- Created - 2026/06/05
 - Technologies Used : Html , css , tailwind , javascript
 - How to reach me : with my 
 [instagram](https://www.instagram.com/nestacode.lab/) and 
