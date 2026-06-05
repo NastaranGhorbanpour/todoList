@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/style/output.css">
+    <link rel="stylesheet" href="assets/fonts/css/fontello.css">
+</head>
+
+<body>
+    <main class="w-full h-screen mainBg relative">
+        <figure class="group z-50 w-37.5 h-37.5 absolute bottom-10 left-6.25">
+
+            <div class="boxes myBg secondAnime"></div>
+
+            <img class="boxes object-cover firstAnime" src="assets/img/me.JPG" alt="">
+
+            <figcaption class="font-[caveat] absolute -bottom-6.25 left-0 text-[18px] text-[rgb(148, 87, 67)]">
+                Nastaran
+                Ghorbanpour</figcaption>
+
+            <a target="_blank" href="https://github.com/NastaranGhorbanpour"
+                class="icon-github-circled myA bottom-5 group-hover:delay-0 group-hover:right-[-20%] group-hover:z-50"></a>
+
+            <a target="_blank" href="https://www.linkedin.com/in/nastaran-ghorbanpour-027a7b349/"
+                class="icon-linkedin myA bottom-17.5 group-hover:delay-0   group-hover:right-[-20%] group-hover:z-50"></a>
+
+            <a target="_blank" href="https://www.instagram.com/nestacode.lab/"
+                class="icon-instagram myA bottom-30  group-hover:delay-0   group-hover:right-[-20%] group-hover:z-50"></a>
+        </figure>
+        <h1 class="myFlex text-[48px] font-bold font-[monda] capitalize py-7.5 ">my tasks</h1>
+        <!-- add -->
+        <section class="w-2/3 myFlex h-1/4 my-7.5 mx-auto ">
+            <input id="newTask" class="newTaskInp" type="text" placeholder="title">
+            <input id="newDesc" class="newTaskInp" type="text" placeholder="description">
+            <button id="addingBtn"
+                class="bg-linear-to-r from-[#A8D2A5] to-[#ACD4E1] hover:font-bold duration-300 cursor-pointer rounded-[25px] w-[41%] h-15 bg-[#A8D2A5] capitalize font-[Monda]">add</button>
+        </section>
+        <!-- ul -->
+        <ul id="list" class="w-2/3 mx-auto ">
+
+
+        </ul>
+
+        <div id="editBox"
+            class="w-[40%] h-75 p-10 bg-white duration-300 shadow-[0_0_20px_black] myFlex justify-end! rounded-4xl absolute -top-full left-[30%] ">
+            <input class="editInp" type="text" name="" id="">
+            <input class="editInp" type="text" name="" id="">
+            <button onclick="doneEdit()"
+                class="font-[Monda] capitalize text-xl px-3 py-1 bg-linear-to-r from-[#A8D2A5] to-[#ACD4E1] rounded-xl cursor-pointer">done</button>
+        </div>
+    </main>
+
+    <script>
+        const newTask = document.getElementById('newTask')
+        const newDesc = document.getElementById('newDesc')
+        const list = document.getElementById('list')
+        const editBox = document.getElementById('editBox')
+
+        document.getElementById('addingBtn').addEventListener('click', () => {
+
+            if (!newTask.value) {
+                newTask.style.border = '2px solid red'
+            } else {
+                newTask.style.border = 'none'
+                const li = document.createElement('li')
+                li.innerHTML = `
+                    <li class='my-10'>
+                        <div class=" w-[70%] mx-auto border-b-2 flex justify-between pb-2 *:flex shadow-[0_3px_4px_0_#C8E3EC]">
+
+
+                            <div>
+                                <img onclick='done(this)' class="cursor-pointer" src="assets/img/notDone.svg" alt="">
+                                <h2 class="font-[Monda] text-[18px] mx-5">${newTask.value}</h2>
+                            </div>
+
+
+                            <div class="cursor-pointer">
+                                <img onclick='mydit(this)' class="mx-5" cl src="assets/img/edit-3.svg" alt="">
+                                <img onclick='del(this)' src="assets/img/trash-2.svg" alt="">
+                            </div>
+                        </div>
+
+
+                        <p class="font-[Monda] text-[14px] w-[70%] mx-auto">${newDesc.value}</p>
+                    </li>  
+
+                
+                `
+                list.appendChild(li)
+                newTask.value = null
+                newDesc.value = null
+                newTask.focus()
+
+            }
+        })
+
+        let doneState = true
+        function done(s) {
+            if (doneState == false) {
+                s.src = 'assets/img/notDone.svg'
+                s.nextElementSibling.classList.remove('line-through' , 'text-[#C4C4C4]')
+                s.parentElement.parentElement.nextElementSibling.classList.remove('line-through' , 'text-[#C4C4C4]')
+            } else {
+                s.src = 'assets/img/done.svg'
+                s.nextElementSibling.classList.add('line-through' , 'text-[#C4C4C4]')
+                s.parentElement.parentElement.nextElementSibling.classList.add('line-through' , 'text-[#C4C4C4]')
+            }
+            doneState = !doneState
+
+        }
+
+        function del(s) {
+            s.parentElement.parentElement.parentElement.remove()
+        }
+
+        let currentTask = null
+        function mydit(s) {
+            editBox.classList.add('top-[30%]')
+            editBox.children[0].value = s.parentElement.previousElementSibling.children[1].innerText
+            editBox.children[1].value = s.parentElement.parentElement.nextElementSibling.innerText
+
+            currentTask = s
+        }
+
+        function doneEdit() {
+            currentTask.parentElement.previousElementSibling.children[1].innerText = editBox.children[0].value
+            currentTask.parentElement.parentElement.nextElementSibling.innerText = editBox.children[1].value
+            editBox.classList.remove('top-[30%]')
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@layer utility {
+    .myFlex {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@layer components {
+    .mainBg {
+        background-image: url(../img/bg.png);
+        background-repeat: no-repeat;
+        background-position: top center;
+    }
+
+    .newTaskInp {
+        width: 70%;
+        height: 40px;
+        background-color: #A8D2A5;
+        font-family: Monda;
+        text-transform: capitalize;
+        padding: 5px 25px 5px 25px;
+    }
+
+    .editInp {
+        width: 100%;
+        height: 40px;
+        padding: 5px;
+        font-family: Monda;
+        font-size: 18px;
+        margin-block: 10px;
+        background: linear-gradient(to right, #A8D2A5, #ACD4E1);
+    }
+
+    .myA {
+        width: 15px;
+        height: 15px;
+        text-decoration: none;
+        position: absolute;
+        right: 40%;
+        font-size: 20px;
+        z-index: -10;
+        transition: 0.4s;
+        color: rgb(85, 57, 21);
+        transition-delay: 0.4s;
+
+        &:hover {
+            color: rgb(148, 87, 67);
+        }
+    }
+
+    .boxes {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+
+}
+
+@layer theme {
+    .firstAnime {
+        animation: bdr1 3s ease-out infinite alternate;
+    }
+
+    .secondAnime {
+        animation: bdr2 3s ease-out alternate infinite;
+    }
+
+    .myBg {
+        background-color: rgb(85, 57, 21);
+    }
+}
+
+@font-face {
+    font-family: Monda;
+    src: url(../fonts/Monda-Regular.ttf);
+}
+
+@keyframes bdr1 {
+    0% {
+        border-radius: 58% 34% 42% 37% / 52% 30% 68% 44%;
+    }
+
+    50% {
+        border-radius: 34% 54% 30% 59% / 75% 59% 36% 33%;
+    }
+
+    100% {
+        border-radius: 61% 43% 75% 27% / 87% 33% 46% 20%;
+    }
+}
+
+@keyframes bdr2 {
+    0% {
+        border-radius: 61% 43% 75% 27% / 87% 33% 46% 20%;
+    }
+
+    50% {
+        border-radius: 58% 34% 42% 37% / 52% 30% 68% 44%;
+    }
+
+    100% {
+        border-radius: 34% 54% 30% 59% / 75% 59% 36% 33%;
+    }
+}
+
+@font-face {
+    font-family: caveat;
+    src: url(../fonts/Caveat-Bold.ttf);
+}
